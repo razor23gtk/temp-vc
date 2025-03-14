@@ -10,6 +10,7 @@ A Discord bot for creating and managing temporary voice channels, created by Cod
 - Manage users (invite, kick, trust, block)
 - Transfer or claim channel ownership
 - All settings automatically saved
+- Simple website showing developer information
 
 ## Quick Setup
 
@@ -20,9 +21,13 @@ A Discord bot for creating and managing temporary voice channels, created by Cod
    CLIENT_ID=your_discord_client_id
    GUILD_ID=your_discord_server_id
    MONGODB_URI=your_mongodb_connection_string
+   PORT=3000
    ```
-3. Deploy commands: `node src/deploy-commands.js`
-4. Start bot: `node src/index.js`
+3. Deploy commands and start bot: `npm start`
+
+## Website
+
+The bot includes a simple website that displays developer information. When you start the bot with `npm start`, the website will be available at `http://localhost:3000` (or the port you specified in the .env file).
 
 ## How to Use
 

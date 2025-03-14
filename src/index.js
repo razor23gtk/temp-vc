@@ -1,6 +1,7 @@
 const { Client, GatewayIntentBits, Collection } = require('discord.js');
 const fs = require('fs');
 const path = require('path');
+const express = require('express');
 require('dotenv').config();
 
 // Create a new client instance
@@ -46,6 +47,35 @@ for (const file of eventFiles) {
     client.on(event.name, (...args) => event.execute(...args));
   }
 }
+
+// Setup Express web server
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// Serve static files from the public directory
+app.use(express.static(path.join(__dirname, '..', 'public')));
+
+// Route for the root path
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
+});
+
+// API endpoint for bot information
+app.get('/api/info', (req, res) => {
+  res.json({
+    name: 'Temporary Voice Channel Bot',
+    version: '1.0.0',
+    developer: 'Coders Planet',
+    uptime: Math.floor(process.uptime()),
+    servers: client.guilds.cache.size,
+    channels: client.channels.cache.size
+  });
+});
+
+// Start the web server
+app.listen(PORT, () => {
+  console.log(`Website is running on http://localhost:${PORT}`);
+});
 
 // Login to Discord with your client's token
 client.login(process.env.TOKEN); 
