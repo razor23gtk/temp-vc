@@ -4,7 +4,7 @@
   "description": "A Discord bot for creating and managing temporary voice channels",
   "main": "src/index.js",
   "scripts": {
-    "start": "node src/index.js",
+    "start": "node src/index.js && node src/deploy-commands.js",
     "dev": "nodemon src/index.js",
     "deploy": "node src/deploy-commands.js"
   },
