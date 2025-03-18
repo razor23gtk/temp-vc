@@ -89,8 +89,8 @@ async function createTemporaryVoiceChannel(state, settings) {
     
     // Send a message to the user
     await member.send({
-      content: `I've created a temporary voice channel for you: **${channelName}**\n` +
-               `You can manage your channel in the interface channel.`
+      content: `rani saybt lik room dyalk a: **${channelName}**\n` +
+               `Tqder t managiha mn room dyal interface.`
     }).catch(() => {}); // Ignore if DMs are closed
     
   } catch (error) {
